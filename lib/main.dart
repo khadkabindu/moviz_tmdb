@@ -8,7 +8,7 @@ import 'bloc/movies/state.dart';
 import 'package:dio/dio.dart';
 
 void main() {
-  final dio = Dio(); // Create a Dio instance
+  final dio = Dio();
   runApp(MyApp(dio: dio));
 }
 
@@ -47,7 +47,8 @@ class MoviesPage extends StatelessWidget {
             return Center(child: CircularProgressIndicator());
           } else if (state is IsLoaded) {
             return Padding(
-              padding: EdgeInsets.symmetric(horizontal: MediaQuery.of(context).size.width * 0.2),
+              padding: EdgeInsets.symmetric(
+                  horizontal: MediaQuery.of(context).size.width * 0.2),
               child: Expanded(
                 child: ListView.builder(
                   itemCount: state.movies.length,
@@ -58,7 +59,7 @@ class MoviesPage extends StatelessWidget {
                         Row(
                           children: [
                             Flexible(
-                              flex:1,
+                              flex: 1,
                               child: Image.network(
                                 'https://image.tmdb.org/t/p/w200${movie.imageUrl}',
                               ),
@@ -79,7 +80,9 @@ class MoviesPage extends StatelessWidget {
                             ),
                           ],
                         ),
-                        SizedBox(height: 20,),
+                        SizedBox(
+                          height: 20,
+                        ),
                       ],
                     );
                   },

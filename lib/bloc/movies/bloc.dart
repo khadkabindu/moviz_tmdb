@@ -6,12 +6,11 @@ import 'state.dart';
 
 import 'package:dio/dio.dart';
 
-
 class MoviesBloc extends Bloc<MoviesEvent, MoviesState> {
   final Dio dio;
 
   MoviesBloc(this.dio) : super(IsInitial()) {
-    on<FetchMovies>((event, emit) async{
+    on<FetchMovies>((event, emit) async {
       emit(IsLoading());
       try {
         final movies = await _fetchMovies();
@@ -21,7 +20,6 @@ class MoviesBloc extends Bloc<MoviesEvent, MoviesState> {
       }
     });
   }
-
 
   @override
   Stream<MoviesState> mapEventToState(MoviesEvent event) async* {
@@ -43,11 +41,3 @@ class MoviesBloc extends Bloc<MoviesEvent, MoviesState> {
     return data.map<Movie>((json) => Movie.fromJson(json)).toList();
   }
 }
-
-
-
-
-
-
-
-
